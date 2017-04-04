@@ -3,34 +3,34 @@ var margin = {top: 30, right: 100, bottom: 20, left: 280},
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-var dset = "times_2016_top200.csv";
+var dset = "times_2016_top30.csv";
 startD3();
 var yearSelector = function (event) {
   var element = document.getElementById("year");
   var selectedValue = element.options[element.selectedIndex].text;
 
     if (selectedValue == "2016") {
-      dset = "times_2016_top200.csv";
+      dset = "times_2016_top30.csv";
       startD3();
     }
     else if (selectedValue =="2015") {
-      dset = "times_2015_top200.csv";
+      dset = "times_2015_top30.csv";
       startD3();
     }
     else if (selectedValue =="2014") {
-      dset = "times_2014_top200.csv";
+      dset = "times_2014_top30.csv";
       startD3();
     }
     else if (selectedValue =="2013") {
-      dset = "times_2013_top200.csv";
+      dset = "times_2013_top30.csv";
       startD3();
     }
     else if (selectedValue =="2012") {
-      dset = "times_2012_top200.csv";
+      dset = "times_2012_top30.csv";
       startD3();
     }
     else if (selectedValue =="2011") {
-      dset = "times_2011_top200.csv";
+      dset = "times_2011_top30.csv";
       startD3();
     }
     console.log(dset);
@@ -67,7 +67,7 @@ var pc1;
 d3.csv(dset, function(data) {
   pc1 = d3.parcoords()("#pc")
     .data(data)
-    .hideAxis(["name","world_rank","university_name","country","","num_students","student_staff_ratio","international_students","female_male_ratio","year"])
+    .hideAxis(["name","world_rank","university_name","num_students","student_staff_ratio","international_students","female_male_ratio","year"])
     .composite("darken")
     .color(function(d) { return blue_to_brown(d['world_rank']); })  // quantitative color scale
     .alpha(0.35)
